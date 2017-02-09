@@ -1,7 +1,7 @@
 FROM php:7.1-cli
 
 RUN apt-get update \
-    && apt-get install -y libssl-dev libcurl4-openssl-dev pkg-config wget unzip re2c libgearman-dev \
+    && apt-get install -y libssl-dev libcurl4-openssl-dev pkg-config wget unzip re2c libgearman-dev git \
     && docker-php-ext-install pcntl \
     && pecl install mongodb-1.2.3 \
     && docker-php-ext-enable mongodb \
