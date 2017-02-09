@@ -1,0 +1,33 @@
+version: '2'
+services:
+  grabber:
+    build: ./grabber
+    env_file: ./common.env
+#    volumes:
+#      - ./grabber:/usr/script
+    links:
+      - gearman
+      - mongodb
+  reviewer:
+    build: ./reviewer
+    env_file: ./common.env
+#    volumes:
+#      - ./reviewer:/usr/script
+    links:
+      - gearman
+      - mongodb
+  poster:
+    build: ./poster
+    env_file: ./common.env
+#    volumes:
+#      - ./poster:/usr/script
+    links:
+      - mongodb
+  mongodb:
+    image: "mongo:3.4"
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./storage/mongodb:/data/db
+  gearman:
+    image: kendu/gearman

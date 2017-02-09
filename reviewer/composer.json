@@ -1,0 +1,15 @@
+{
+  "require": {
+    "aura/autoload": "*",
+    "vaseninm/configure": "dev-master",
+    "purekid/mongodm": "*",
+    "alcaeus/mongo-php-adapter": "*",
+    "jurager/morphy": "*"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/vaseninm/configure"
+    }
+  ]
+}

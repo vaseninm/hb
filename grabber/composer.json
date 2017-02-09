@@ -1,0 +1,20 @@
+{
+  "require": {
+    "aura/autoload": "*",
+    "vaseninm/configure": "dev-master",
+    "purekid/mongodm": "*",
+    "alcaeus/mongo-php-adapter": "*",
+    "react/react": "*",
+    "fdcore/vk.api": "*"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/fdcore/vk.api"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/vaseninm/configure"
+    }
+  ]
+}

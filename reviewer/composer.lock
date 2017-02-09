@@ -1,0 +1,316 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "b390e916a9bfa1621bf05141799e1a3b",
+    "packages": [
+        {
+            "name": "alcaeus/mongo-php-adapter",
+            "version": "1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alcaeus/mongo-php-adapter.git",
+                "reference": "fea3f8333c7b22dde97d7dbe8a82528fc5c27992"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alcaeus/mongo-php-adapter/zipball/fea3f8333c7b22dde97d7dbe8a82528fc5c27992",
+                "reference": "fea3f8333c7b22dde97d7dbe8a82528fc5c27992",
+                "shasum": ""
+            },
+            "require": {
+                "ext-hash": "*",
+                "mongodb/mongodb": "^1.0.1",
+                "php": "^5.5 || ^7.0"
+            },
+            "provide": {
+                "ext-mongo": "1.6.14"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8 || ^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mongo": "lib/Mongo"
+                },
+                "psr-4": {
+                    "Alcaeus\\MongoDbAdapter\\": "lib/Alcaeus/MongoDbAdapter"
+                },
+                "files": [
+                    "lib/Mongo/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "alcaeus",
+                    "email": "alcaeus@alcaeus.org"
+                },
+                {
+                    "name": "Olivier Lechevalier",
+                    "email": "olivier.lechevalier@gmail.com"
+                }
+            ],
+            "description": "Adapter to provide ext-mongo interface on top of mongo-php-libary",
+            "keywords": [
+                "database",
+                "mongodb"
+            ],
+            "time": "2017-01-29 08:35:26"
+        },
+        {
+            "name": "aura/autoload",
+            "version": "2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/auraphp/Aura.Autoload.git",
+                "reference": "306a7f8d3cb58fb6f94bcff1dddf20c543f68668"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/auraphp/Aura.Autoload/zipball/306a7f8d3cb58fb6f94bcff1dddf20c543f68668",
+                "reference": "306a7f8d3cb58fb6f94bcff1dddf20c543f68668",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "aura": {
+                    "type": "library"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Aura\\Autoload\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Aura.Autoload Contributors",
+                    "homepage": "https://github.com/auraphp/Aura.Autoload/contributors"
+                }
+            ],
+            "description": "Provides a PSR-4 compliant autoloader implementation.",
+            "homepage": "https://github.com/auraphp/Aura.Autoload",
+            "keywords": [
+                "PSR-4",
+                "SPL autoloader",
+                "autoload",
+                "autoloader",
+                "class loader"
+            ],
+            "time": "2016-10-03 19:36:19"
+        },
+        {
+            "name": "jurager/morphy",
+            "version": "0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jurager/morphy.git",
+                "reference": "093da0bcdfe51296fff9df3a62e05313caa049d7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jurager/morphy/zipball/093da0bcdfe51296fff9df3a62e05313caa049d7",
+                "reference": "093da0bcdfe51296fff9df3a62e05313caa049d7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "libs/phpmorphy/src/common.php",
+                    "libs/phpmorphy/src/"
+                ],
+                "psr-4": {
+                    "cijic\\phpMorphy\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chiril Teterea",
+                    "email": "altcode@ya.ru",
+                    "role": "Developer"
+                }
+            ],
+            "description": "phpMorphy - morphological analyzer library for Russisan, English languages.",
+            "homepage": "https://github.com/cijic/phpmorphy",
+            "keywords": [
+                "phpmorphy"
+            ],
+            "time": "2015-09-19 11:27:14"
+        },
+        {
+            "name": "mongodb/mongodb",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mongodb/mongo-php-library.git",
+                "reference": "318d4b95438a2ea68a550c2878678097f63fb9fe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mongodb/mongo-php-library/zipball/318d4b95438a2ea68a550c2878678097f63fb9fe",
+                "reference": "318d4b95438a2ea68a550c2878678097f63fb9fe",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mongodb": "^1.2.0",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "MongoDB\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Jeremy Mikola",
+                    "email": "jmikola@gmail.com"
+                },
+                {
+                    "name": "Hannes Magnusson",
+                    "email": "bjori@mongodb.com"
+                },
+                {
+                    "name": "Derick Rethans",
+                    "email": "github@derickrethans.nl"
+                }
+            ],
+            "description": "MongoDB driver library",
+            "homepage": "https://jira.mongodb.org/browse/PHPLIB",
+            "keywords": [
+                "database",
+                "driver",
+                "mongodb",
+                "persistence"
+            ],
+            "time": "2017-01-17 19:59:32"
+        },
+        {
+            "name": "purekid/mongodm",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/purekid/mongodm.git",
+                "reference": "0152cb59f5fcede9336e4c0d93a0ae8a121e062b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/purekid/mongodm/zipball/0152cb59f5fcede9336e4c0d93a0ae8a121e062b",
+                "reference": "0152cb59f5fcede9336e4c0d93a0ae8a121e062b",
+                "shasum": ""
+            },
+            "require-dev": {
+                "chriskite/phactory": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Purekid\\Mongodm\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael.Gan",
+                    "homepage": "http://github/purekid"
+                }
+            ],
+            "description": "MongoDB ORM that includes support for references,embed and multilevel inheritance.",
+            "keywords": [
+                "mongodb",
+                "mongodm",
+                "orm"
+            ],
+            "time": "2014-07-31 10:22:22"
+        },
+        {
+            "name": "vaseninm/configure",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vaseninm/configure.git",
+                "reference": "c22f496d38f553af9e66b095cba261e2651bb60c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vaseninm/configure/zipball/c22f496d38f553af9e66b095cba261e2651bb60c",
+                "reference": "c22f496d38f553af9e66b095cba261e2651bb60c",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "vaseninm\\configure\\": "src"
+                }
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Matvey Vasenin",
+                    "email": "vasenin@pixelio.ru"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/vaseninm/configure/tree/master",
+                "issues": "https://github.com/vaseninm/configure/issues"
+            },
+            "time": "2017-01-29 16:57:18"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "vaseninm/configure": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
