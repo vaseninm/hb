@@ -10,3 +10,5 @@ services:
   poster:
     volumes:
       - ./poster:/usr/script
+  mongodb:
+    command: ''

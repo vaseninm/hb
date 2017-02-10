@@ -8,10 +8,12 @@ try {
     $autoloader = new \Aura\Autoload\Loader();
     $autoloader->addPrefix('grabber', BASE_DIR . '/src');
     $autoloader->register();
-    
+
+    $env = array_key_exists('COMMON_ENV', $_SERVER) ? $_SERVER['COMMON_ENV'] : 'development';
     $config = \vaseninm\configure\Configure::me()
         ->addConfig('production', 'main.production')
-        ->selectConfig('production')
+        ->addConfig('development', 'main.development')
+        ->selectConfig($env)
     ;
 
     $gearmanClient = new GearmanClient();

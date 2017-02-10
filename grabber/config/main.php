@@ -4,9 +4,9 @@ return [
     'mongo' => [
             'connection' => [
                 'hostnames' => 'mongodb',
-                'database'  => 'grabber',
-//                'username'  => '',
-//                'password'  => '',
+                'database'  => $_SERVER['COMMON_MONGO_DATABASE'],
+                'username'  => $_SERVER['COMMON_MONGO_USERNAME'],
+                'password'  => $_SERVER['COMMON_MONGO_PASSWORD'],
                 'options' => [],
             ],
     ],

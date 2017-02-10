@@ -23,5 +23,6 @@ services:
       - "27017:27017"
     volumes:
       - ./storage/mongodb:/data/db
+    command: --auth
   gearman:
     image: kendu/gearman
