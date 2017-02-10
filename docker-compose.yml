@@ -3,24 +3,18 @@ services:
   grabber:
     build: ./grabber
     env_file: ./common.env
-#    volumes:
-#      - ./grabber:/usr/script
     links:
       - gearman
       - mongodb
   reviewer:
     build: ./reviewer
     env_file: ./common.env
-#    volumes:
-#      - ./reviewer:/usr/script
     links:
       - gearman
       - mongodb
   poster:
     build: ./poster
     env_file: ./common.env
-#    volumes:
-#      - ./poster:/usr/script
     links:
       - mongodb
   mongodb:

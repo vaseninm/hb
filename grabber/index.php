@@ -21,7 +21,7 @@ try {
 
     \Purekid\Mongodm\MongoDB::setConfigBlock('default', $config->get('mongo'));
     
-    $loop->addPeriodicTimer(1, function() use ($gearmanClient) {
+    $loop->addPeriodicTimer($config->get('period'), function() use ($gearmanClient) {
         \grabber\importer\VkGroupImporter::create()
             ->setGearmanClient($gearmanClient)
             ->run();

@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  grabber:
+    volumes:
+      - ./grabber:/usr/script
+  reviewer:
+    volumes:
+      - ./reviewer:/usr/script
+  poster:
+    volumes:
+      - ./poster:/usr/script

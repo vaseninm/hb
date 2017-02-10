@@ -32,13 +32,14 @@ try {
         }
     };
     
-    $loop->addPeriodicTimer(30, function () use ($registry) {
-        $cron = \Cron\CronExpression::factory('*/5 * * * *');
+    $loop->addPeriodicTimer(30, function () use ($registry, $config) {
+        $cron = \Cron\CronExpression::factory($config->get('community')['cron']);
 
-        if ($cron->isDue() && ! $registry->isCurrent()) {
-            $registry->updatePrev();
-            echo date('Y-m-d H:i:s') . PHP_EOL;
+        if (! ($cron->isDue() && ! $registry->isCurrent()) ) {
+            return $registry->updatePrev();
         }
+
+        $registry->updatePrev();
 
         $vacancy = \poster\models\Vacancy::find(
             ['status' => \poster\models\Vacancy::STATUS_ACCEPTED],
