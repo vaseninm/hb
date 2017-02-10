@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "77b2df41171e3f26a45f53891a5f6561",
+    "hash": "d8335eaa89864d41f3ee552e18147cea",
     "packages": [
         {
             "name": "alcaeus/mongo-php-adapter",
@@ -876,12 +876,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vaseninm/configure.git",
-                "reference": "7adaf422a858681388b011a041bcfeea264f06a1"
+                "reference": "c22f496d38f553af9e66b095cba261e2651bb60c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vaseninm/configure/zipball/7adaf422a858681388b011a041bcfeea264f06a1",
-                "reference": "7adaf422a858681388b011a041bcfeea264f06a1",
+                "url": "https://api.github.com/repos/vaseninm/configure/zipball/c22f496d38f553af9e66b095cba261e2651bb60c",
+                "reference": "c22f496d38f553af9e66b095cba261e2651bb60c",
                 "shasum": ""
             },
             "type": "library",
@@ -903,7 +903,7 @@
                 "source": "https://github.com/vaseninm/configure/tree/master",
                 "issues": "https://github.com/vaseninm/configure/issues"
             },
-            "time": "2017-01-29 16:23:15"
+            "time": "2017-01-29 16:57:18"
         }
     ],
     "packages-dev": [],
