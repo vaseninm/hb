@@ -6,7 +6,7 @@ try {
     require 'vendor/autoload.php';
 
     $autoloader = new Aura\Autoload\Loader();
-    $autoloader->addPrefix('poster', BASE_DIR . '/src');
+    $autoloader->addPrefix('grabber', BASE_DIR . '/src');
     $autoloader->register();
 
     $env = array_key_exists('COMMON_ENV', $_SERVER) ? $_SERVER['COMMON_ENV'] : 'development';
@@ -16,8 +16,8 @@ try {
         ->selectConfig($env)
     ;
 
-    $vk = new \Vk($config->get('vk'));
-    echo $vk->get_code_token() . PHP_EOL;
+    \Purekid\Mongodm\MongoDB::setConfigBlock('default', $config->get('mongo'));
+    \grabber\commands\Command::create()->run($argv);
 
 } catch (Exception $e) {
     throw $e;
