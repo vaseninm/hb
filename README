@@ -1,0 +1,2 @@
+docker exec -it hb_mongodb_1 mongo admin
+db.createUser({user:'',pwd: '',roles:[{ role: "readWrite", db: "hb" }]});
