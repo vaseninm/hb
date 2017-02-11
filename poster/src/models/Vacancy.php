@@ -9,6 +9,7 @@ use Purekid\Mongodm\Model;
  * @property integer $id
  * @property string $text
  * @property string $category
+ * @property Supplier $supplier
  * @property string $status
  * @property \MongoTimestamp $importedAt
  * @property string $photo
@@ -37,6 +38,10 @@ class Vacancy extends \Purekid\Mongodm\Model
         ],
         'text' => [
             'type' => Model::DATA_TYPE_STRING,
+        ],
+        'supplier' => [
+            'type' => Model::DATA_TYPE_REFERENCE,
+            'model'=> '\poster\models\Supplier',
         ],
         'status' => [
             'type' => Model::DATA_TYPE_STRING,

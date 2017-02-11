@@ -83,9 +83,11 @@ class Poster
         $message = '';
         $message .= $this->vacancy->text;
 
-        if ($this->vacancy->ownerId) {
-            $message .= PHP_EOL . '@id2004952 (Автор сообщения 1), @id3398555 (Автор сообщения 2), ';
+        if ($this->vacancy->ownerId || true) {
+            $message .= PHP_EOL . '@id2004952 (Матвей), @id3398555 (Глеб), ';
         }
+
+        $message .= PHP_EOL . 'Паблик (имя после https://vk.com/): ' . $this->vacancy->supplier->title;
 
         return $message;
     }

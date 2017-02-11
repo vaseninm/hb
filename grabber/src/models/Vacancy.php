@@ -32,7 +32,7 @@ class Vacancy extends \Purekid\Mongodm\Model
         ],
         'supplier' => [
             'type' => Model::DATA_TYPE_REFERENCE,
-            'model'=> '\Grabber\Models\Supplier',
+            'model'=> '\grabber\models\Supplier',
         ],
         'status' => [
             'type' => Model::DATA_TYPE_STRING,
