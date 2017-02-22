@@ -17,6 +17,12 @@ services:
     env_file: ./common.env
     links:
       - mongodb
+  telegram:
+    build: ./telegram
+    env_file: ./common.env
+    links:
+      - mongodb
+#      - gearman
   mongodb:
     image: "mongo:3.4"
     ports:

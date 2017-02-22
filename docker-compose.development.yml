@@ -10,5 +10,8 @@ services:
   poster:
     volumes:
       - ./poster:/usr/script
+  telegram:
+    volumes:
+      - ./telegram:/usr/script
   mongodb:
     command: ''

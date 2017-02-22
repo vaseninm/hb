@@ -1,5 +1,6 @@
 /grabber/vendor/
 /reviewer/vendor/
 /poster/vendor/
+/telegram/vendor/
 /storage/mongodb/*
 common.env
