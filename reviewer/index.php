@@ -17,13 +17,14 @@ try {
 
     \Purekid\Mongodm\MongoDB::setConfigBlock('default', $config->get('mongo'));
 
-//    $items = \Reviewer\Models\Vacancy::find(['status' => \Reviewer\Models\Vacancy::STATUS_ACCEPTED]);
+
+//    $item = \reviewer\models\Vacancy::find(['status' => \reviewer\models\Vacancy::STATUS_NEW])->first();
+//    
+//    \reviewer\services\Reviewer::create()
+//        ->setVacancy($item)
+//        ->run();
 //
-//    foreach ($items as $item) {
-//        \Reviewer\Reviewer\Reviewer::create()
-//            ->setVacancy($item)
-//            ->run();
-//    }
+//    die;
 
     $worker = new GearmanWorker();
     $worker->addServer('gearman');

@@ -18,10 +18,11 @@ class Reviewer
     public static function create()
     {
         $self = new self();
-        
+
         $self->stopWords = Configure::me()->get('censor')['stopWords'];
         $self->goodWords = Configure::me()->get('censor')['goodWords'];
         $self->categoryWords = Configure::me()->get('categoryWords');
+        $self->categoryWords = $self->toWeightArray($self->categoryWords);
 
         return $self;
     }
@@ -67,28 +68,56 @@ class Reviewer
     {
         if ($this->vacancy->status !== Vacancy::STATUS_ACCEPTED) return $this;
 
-        $words = $this->vacancy->getWords();
+        $vacancyWords = $this->vacancy->getWords();
 
-        $intersect = [];
+        $weightFromCategory = [];
 
-        foreach ($this->categoryWords as $category => $word) {
-            $intersect[$category] = count(array_intersect($words, $word));
+        foreach ($this->categoryWords as $category => $words) {
+            $weightFromCategory[$category] = 0;
+
+            foreach ($vacancyWords as $word) {
+                array_key_exists($word, $words) && $weightFromCategory[$category] += $words[$word];
+            }
         }
 
-        $maxValue = max($intersect);
-        $maxCategory = array_search($maxValue, $intersect);
+        $maxValue = max($weightFromCategory);
+        $maxCategory = array_search($maxValue, $weightFromCategory);
         
-        if ($maxValue >= 2) {
+        if ($maxValue >= 1) {
             $this->vacancy->category = $maxCategory;
             $this->vacancy->save();
+
+            $this->log("Vacancy [" . $this->vacancy->getId() . "] has new category: [" . $this->vacancy->category . "]");
+        } else {
+            $this->vacancy->status = Vacancy::STATUS_REJECTED;
+
+            $this->log("Vacancy [" . $this->vacancy->getId() . "] has new status: [" . $this->vacancy->status . "]");
         }
 
-        $this->log("Vacancy [" . $this->vacancy->getId() . "] has new category: [" . $this->vacancy->category . "]");
 
         return $this;
     }
 
     public function log($message) {
         echo $message . PHP_EOL;
+    }
+
+    protected function toWeightArray($array) {
+        $weightArray = [];
+
+        foreach ($array as $category => $words) {
+            $weightArray[$category] = [];
+
+            foreach ($words as $key => $weight) {
+                if (is_string($weight)) {
+                    $key = $weight;
+                    $weight = Configure::me()->get('categoryDefaultWeight');
+                }
+
+                $weightArray[$category][$key] = $weight;
+            }
+        }
+
+        return $weightArray;
     }
 }

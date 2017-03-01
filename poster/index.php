@@ -44,12 +44,15 @@ try {
         $registry->updatePrev();
 
         $vacancy = \poster\models\Vacancy::find(
-            ['status' => \poster\models\Vacancy::STATUS_ACCEPTED],
-            ['category' => 1],
+            [
+                'status' => \poster\models\Vacancy::STATUS_ACCEPTED,
+                'category' => ['$exists' => true]
+            ],
+            ['importedAt' => 1],
             [],
             1
         )->get();
-
+        
         if (! $vacancy) {
             echo "No vacancy for posting. Skipped." . PHP_EOL;
             return false;

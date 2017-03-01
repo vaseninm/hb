@@ -19,6 +19,6 @@ return [
     'telegram' => [
         'token' => $_SERVER['TELEGRAM_TOKEN'],
         'chat_id' => array_key_exists('TELEGRAM_CHAT_ID', $_SERVER) ? $_SERVER['TELEGRAM_CHAT_ID'] : null,
-        'users' => ['vaseninm'],
+        'users' => ['vaseninm', 'symbiosiz'],
     ],
 ];
