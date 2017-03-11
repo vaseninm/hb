@@ -2,6 +2,7 @@
 
 namespace reviewer\services;
 
+use reviewer\models\CategoryWord;
 use reviewer\models\Vacancy;
 use vaseninm\configure\Configure;
 
@@ -21,8 +22,9 @@ class Reviewer
 
         $self->stopWords = Configure::me()->get('censor')['stopWords'];
         $self->goodWords = Configure::me()->get('censor')['goodWords'];
-        $self->categoryWords = Configure::me()->get('categoryWords');
-        $self->categoryWords = $self->toWeightArray($self->categoryWords);
+
+
+        $self->categoryWords = $self->getCategoryWords();
 
         return $self;
     }
@@ -71,7 +73,7 @@ class Reviewer
         $vacancyWords = $this->vacancy->getWords();
 
         $weightFromCategory = [];
-
+        
         foreach ($this->categoryWords as $category => $words) {
             $weightFromCategory[$category] = 0;
 
@@ -98,26 +100,23 @@ class Reviewer
         return $this;
     }
 
-    public function log($message) {
-        echo $message . PHP_EOL;
-    }
+    public function getCategoryWords() {
+        /**
+         * @var CategoryWord[] $words
+         */
+        $words = CategoryWord::find();
+        $array = [];
 
-    protected function toWeightArray($array) {
-        $weightArray = [];
+        foreach ($words as $word) {
+            if (! array_key_exists($word->category, $array)) $array[$word->category] = [];
 
-        foreach ($array as $category => $words) {
-            $weightArray[$category] = [];
-
-            foreach ($words as $key => $weight) {
-                if (is_string($weight)) {
-                    $key = $weight;
-                    $weight = Configure::me()->get('categoryDefaultWeight');
-                }
-
-                $weightArray[$category][$key] = $weight;
-            }
+            $array[$word->category][$word->word] = $word->weight;
         }
 
-        return $weightArray;
+        return $array;
+    }
+
+    public function log($message) {
+        echo $message . PHP_EOL;
     }
 }

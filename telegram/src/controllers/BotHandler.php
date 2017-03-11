@@ -10,10 +10,14 @@ namespace telegram\controllers;
 
 
 use telegram\commands\AddVkGroup;
+use telegram\commands\AddWordList;
 use telegram\commands\GetVkAuthLink;
 use telegram\commands\GetVkGroupList;
+use telegram\commands\GetWordList;
 use telegram\commands\Help;
 use telegram\commands\RemoveVkGroup;
+use telegram\commands\RemoveWordList;
+use telegram\commands\ResetWordList;
 use telegram\models\TelegramCurrentCommand;
 use TelegramBot\Api\Client;
 use TelegramBot\Api\Types\Message;
@@ -27,6 +31,10 @@ class BotHandler
         'getVkGroupList' => GetVkGroupList::class,
         'removeVkGroup' => RemoveVkGroup::class,
         'getVkAuthLink' => GetVkAuthLink::class,
+        'resetWordList' => ResetWordList::class,
+        'addWordList' => AddWordList::class,
+        'removeWordList' => RemoveWordList::class,
+        'getWordList' => GetWordList::class,
     ];
 
     /**

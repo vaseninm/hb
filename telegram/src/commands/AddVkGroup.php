@@ -17,7 +17,7 @@ class AddVkGroup extends AbstractCommand
 
     public function afterFinish()
     {
-        $title = strtolower($this->command->arguments[0]);
+        $title = mb_strtolower($this->command->arguments[0]);
 
         if (Supplier::has(['title' => $title]))
             return $this->send("Группа [{$title}] уже существует");

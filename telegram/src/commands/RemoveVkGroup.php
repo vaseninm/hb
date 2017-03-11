@@ -38,7 +38,7 @@ class RemoveVkGroup extends AbstractCommand
 
     public function afterFinish()
     {
-        $title = strtolower($this->command->arguments[0]);
+        $title = mb_strtolower($this->command->arguments[0]);
 
         $model = Supplier::find(['title' => $title]);
 

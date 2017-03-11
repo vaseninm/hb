@@ -21,6 +21,10 @@ class Help extends AbstractCommand
         $text .= "\t/addVkGroup - Добавить поставщика" . PHP_EOL;
         $text .= "\t/removeVkGroup - Удалить поставщика" . PHP_EOL;
         $text .= "\t/getVkAuthLink - Получить ссылку для авторизации этого приложения" . PHP_EOL;
+        $text .= "\t/resetWordList - Сбросить список слов" . PHP_EOL;
+        $text .= "\t/getWordList - Получить список слов" . PHP_EOL;
+        $text .= "\t/addWordList - Добавить (или изменить) список слов с весами" . PHP_EOL;
+        $text .= "\t/removeWordList - Удалить список слов" . PHP_EOL;
 
         return $text;
     }

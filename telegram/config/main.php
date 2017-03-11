@@ -1,5 +1,7 @@
 <?php
 
+use telegram\models\Vacancy;
+
 return [
     'mongo' => [
             'connection' => [
@@ -20,5 +22,24 @@ return [
         'token' => $_SERVER['TELEGRAM_TOKEN'],
         'chat_id' => array_key_exists('TELEGRAM_CHAT_ID', $_SERVER) ? $_SERVER['TELEGRAM_CHAT_ID'] : null,
         'users' => ['vaseninm', 'symbiosiz'],
+    ],
+    'categoryDefaultWeight' => 0.34,
+    'categoryWords' => [
+        Vacancy::CATEGORY_DESIGNER => [
+            'ДИЗАЙНЕР' => 1, 'ФОТО', 'PHOTOSHOP', 'ILLUSTRATOR', 'INDESIGN', 'МАКЕТ', 'ИЛЛЮСТРАТОР' => 1, 'ИНДИЗАЙН',
+            'ТИПОГРАФИЯ', 'ПЕЧАТЬ', 'ВИЗУАЛИЗАЦИЯ', 'АНИМАЦИЯ', 'ОФОРМЛЕНИЕ', 'ПОРТФОЛИО', 'МОУШНДИЗАЙНЕР',
+            'ВЕБДИЗАЙНЕР', 'КЛЮЧ', 'РЕКЛАМА', 'БАННЕР', 'ПОЛИГРАФИЯ', 'РИСОВАНИЕ', 'ВЕКТОР', 'ОТРИСОВАТЬ', 'ЛОГО',
+            'СТИЛЬ', 'ЦВЕТ', 'ШАБЛОН', 'ЛОГО', 'НАРИСОВАТЬ', 'ДИЗАЙН'
+        ],
+        Vacancy::CATEGORY_FRONTEND => [
+            'ВЕРСТАЛЬЩИК' => 1, 'HTML', 'CSS', 'JQUERY', 'КРОССБРАУЗЕРНОСТЬ', 'ВЕРСТКА', 'ШАБЛОН', 'НАТЯНУТЬ'
+        ],
+        Vacancy::CATEGORY_PROGRAMMER => [
+            'ПРОГРАММИСТ' => 1, 'PHP', 'JAVASCRIPT', 'JAVA', 'РАЗРАБОТКА', 'РАЗРАБАТЫВАТЬ', 'КОД', 'ООП', 'РАЗРАБОТЧИК' => 1,
+            'ПРОГРАММИРОВАНИЕ', 'ПРОГРАММА',
+        ],
+//        Vacancy::CATEGORY_WEBMASTER => [
+//            'АДМИН' => 1, 'САЙТ', 'ПЛАТФОРМА', 'НАСТРОИТЬ', 'ПРАВКА', 'СИСТЕМА', 'ШАБЛОН'
+//        ],
     ],
 ];
