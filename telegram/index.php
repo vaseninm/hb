@@ -31,12 +31,18 @@ try {
         return in_array($update->getMessage()->getFrom()->getUsername(), $config->get('telegram')['users']);
     });
 
-    $loop->addPeriodicTimer(3, function () use ($botApi, $botClient) {
-        $updates = $botApi->getUpdates(TelegramLastUpdate::getNext());
-        if (! empty($updates)) {
-            TelegramLastUpdate::importLastIdFromUpdates($updates);
-            $botClient->handle($updates);
+    $loop->addPeriodicTimer(2, function () use ($botApi, $botClient) {
+        try {
+            $updates = $botApi->getUpdates(TelegramLastUpdate::getNext());
+            if (! empty($updates)) {
+                TelegramLastUpdate::importLastIdFromUpdates($updates);
+                $botClient->handle($updates);
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage() . PHP_EOL;
+            sleep(30);
         }
+
     });
 
 //    $loop->addTimer(5, function () use ($botApi, $botClient) {

@@ -27,14 +27,14 @@ class BotHandler
     const COMMANDS = [
         'start' => Help::class,
         'help' => Help::class,
-        'addVkGroup' => AddVkGroup::class,
-        'getVkGroupList' => GetVkGroupList::class,
-        'removeVkGroup' => RemoveVkGroup::class,
-        'getVkAuthLink' => GetVkAuthLink::class,
-        'resetWordList' => ResetWordList::class,
-        'addWordList' => AddWordList::class,
-        'removeWordList' => RemoveWordList::class,
-        'getWordList' => GetWordList::class,
+        'addvkgroup' => AddVkGroup::class,
+        'getvkgrouplist' => GetVkGroupList::class,
+        'removevkgroup' => RemoveVkGroup::class,
+        'getvkauthlink' => GetVkAuthLink::class,
+        'resetwordlist' => ResetWordList::class,
+        'addwordlist' => AddWordList::class,
+        'removewordlist' => RemoveWordList::class,
+        'getwordlist' => GetWordList::class,
     ];
 
     /**
@@ -114,7 +114,7 @@ class BotHandler
         preg_match(Client::REGEXP, $this->message->getText(), $matches);
 
         if (!empty($matches)) {
-            return $matches[1];
+            return mb_strtolower($matches[1]);
         }
 
         return null;
