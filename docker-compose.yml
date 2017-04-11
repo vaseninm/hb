@@ -3,23 +3,27 @@ services:
   grabber:
     build: ./grabber
     env_file: ./common.env
+    restart: on-failure:10
     links:
       - gearman
       - mongodb
   reviewer:
     build: ./reviewer
     env_file: ./common.env
+    restart: on-failure:10
     links:
       - gearman
       - mongodb
   poster:
     build: ./poster
     env_file: ./common.env
+    restart: on-failure:10
     links:
       - mongodb
   telegram:
     build: ./telegram
     env_file: ./common.env
+    restart: on-failure:10
     links:
       - mongodb
 #      - gearman
@@ -30,5 +34,7 @@ services:
     volumes:
       - ./storage/mongodb:/data/db
     command: --auth
+    restart: on-failure:10
   gearman:
     image: kendu/gearman
+    restart: on-failure:10
