@@ -57,48 +57,53 @@ class VkGroupImporter extends AbstractImporter implements ImporterInterface
      */
     public function importOne(Supplier $supplier) : ImporterInterface
     {
-        $supplier->lastImport = new \MongoTimestamp();
-        $supplier->save();
 
-        $posts = $this->getVk()->api('wall.get', [
-            'domain' => $supplier->title,
-            'count' => self::POST_COUNT,
-            'filter' => 'owners',
-            'extended' => 1,
-            'fields' => 'signer'
-        ])['items'];
+        try {
+            $posts = $this->getVk()->api('wall.get', [
+                'domain' => $supplier->title,
+                'count' => self::POST_COUNT,
+                'filter' => 'owners',
+                'extended' => 1,
+                'fields' => 'signer'
+            ])['items'];
 
-        foreach ($posts as $post) {
-            if ($post['is_pinned']) continue;
+            $supplier->lastImport = new \MongoTimestamp();
+            $supplier->save();
 
-            $vacancy = Vacancy::one([
-                'id' => $post['id'],
-                'supplier.$id' => $supplier->_id,
-            ]);
+            foreach ($posts as $post) {
+                if ($post['is_pinned']) continue;
 
-            if ($vacancy) continue;
+                $vacancy = Vacancy::one([
+                    'id' => $post['id'],
+                    'supplier.$id' => $supplier->_id,
+                ]);
 
-            $vacancy = new Vacancy();
-            $vacancy->id = $post['id'];
-            $vacancy->text = $post['text'];
-            $vacancy->status = Vacancy::STATUS_NEW;
-            $vacancy->importedAt = new \MongoTimestamp();
-            $vacancy->ownerId = $post['signer_id'];
-            $vacancy->supplier = $supplier;
+                if ($vacancy) continue;
 
-            if (array_key_exists('attachments', $post)) {
-                foreach ($post['attachments'] as $attach) {
-                    if ($attach['type'] === 'photo') {
-                        $vacancy->photo = $attach['photo']['photo_1280'];
-                        break;
+                $vacancy = new Vacancy();
+                $vacancy->id = $post['id'];
+                $vacancy->text = $post['text'];
+                $vacancy->status = Vacancy::STATUS_NEW;
+                $vacancy->importedAt = new \MongoTimestamp();
+                $vacancy->ownerId = $post['signer_id'];
+                $vacancy->supplier = $supplier;
+
+                if (array_key_exists('attachments', $post)) {
+                    foreach ($post['attachments'] as $attach) {
+                        if ($attach['type'] === 'photo') {
+                            $vacancy->photo = $attach['photo']['photo_1280'];
+                            break;
+                        }
                     }
                 }
-            }
 
-            if ($vacancy->save()) {
-                $this->log("Add post id [{$vacancy->id}] from supplier [{$supplier->title}]");
-                $this->gearmanClient->doBackground('vacancy_create', $vacancy->getId());
+                if ($vacancy->save()) {
+                    $this->log("Add post id [{$vacancy->id}] from supplier [{$supplier->title}]");
+                    $this->gearmanClient->doBackground('vacancy_create', $vacancy->getId());
+                }
             }
+        } catch (\VkException $e) {
+            $this->log("Vk service is not available");
         }
 
         return $this;
