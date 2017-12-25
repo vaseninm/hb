@@ -32,9 +32,11 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ./storage/mongodb:/data/db
-    command: --auth
+      - mongodb:/data/db
+    env_file: ./common.env
     restart: on-failure:10
   gearman:
     image: kendu/gearman
     restart: on-failure:10
+volumes:
+  mongodb:
